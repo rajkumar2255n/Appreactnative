@@ -1,4 +1,4 @@
-// functions/index.js
+
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const express = require('express');
@@ -15,13 +15,13 @@ app.post('/addData', async (req, res) => {
     const data = req.body.data;
 
     // Add your MongoDB connection string and database name
-    const uri = 'YOUR_MONGODB_CONNECTION_STRING';
+    const uri = 'MONGODB_CONNECTION_url';
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
     await client.connect();
 
-    const db = client.db('YOUR_DATABASE_NAME');
-    const collection = db.collection('YOUR_COLLECTION_NAME');
+    const db = client.db('MyCaptain_test');
+    const collection = db.collection('users');
 
     await collection.insertOne({ data });
 
